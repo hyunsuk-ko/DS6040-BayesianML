@@ -112,6 +112,7 @@ class QDA:
         yes_likelihood = self.likelihoods[1]
         no_prior = priors["no"]
         yes_prior = priors["yes"]
+        
         no_posterior = no_likelihood * no_prior
         yes_posterior = yes_likelihood * yes_prior
         
@@ -134,26 +135,12 @@ class QDA:
         print('No: ', cost['FP'] * self.posterior['no'])
         print('Yes: ', cost['FN'] * self.posterior['yes'])
         print()
-        if cost['FP'] * self.posterior['no'] <= cost['FN'] * self.posterior['yes']:
+        if cost['FP'] * self.posterior['no'] >= cost['FN'] * self.posterior['yes']:
             print("Decision: no")
         else:
             print("Decision: yes")
         print()
 
-'''
-model_qda = QDA('bank-partial.csv')
-
-observation = [58, 261, 261]
-model_qda.compute_likelihoods(observation)
-
-given_priors = {
-    "no": 1 / 2,
-    "yes": 1 / 2,
-}
-
-model_qda.compute_probabilities(observation, given_priors)
-model_qda.decision()
-'''
 
 
 

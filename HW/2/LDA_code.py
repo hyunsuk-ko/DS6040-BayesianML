@@ -133,25 +133,8 @@ class LDA:
         print('No: ', cost['FP'] * self.posterior['no'])
         print('Yes: ', cost['FN'] * self.posterior['yes'])
         print()
-        if cost['FP'] * self.posterior['no'] <= cost['FN'] * self.posterior['yes']:
+        if cost['FP'] * self.posterior['no'] >= cost['FN'] * self.posterior['yes']:
             print("Decision: no")
         else:
             print("Decision: yes")
         print()
-
-'''
-model_lda = LDA('iris_data.csv')
-
-Iris_setosa_observation = [5.1, 3.5, 1.4, 0.2]
-model_lda.compute_likelihoods(Iris_setosa_observation)
-
-uninformative_priors = {
-    "Iris-setosa": 1 / 3,
-    "Iris-versicolor": 1 / 3,
-    "Iris-virginica": 1 / 3
-}
-model_lda.compute_probabilities(Iris_setosa_observation, uninformative_priors)
-print(model_lda)
-'''
-
-
